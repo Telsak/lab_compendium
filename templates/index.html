@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combine PDF/DOCX</title>
+    <style>
+        .order-number {
+            font-weight: bold;
+            color: #333;
+            margin-right: 8px;
+        }
+        #file-list { 
+            list-style-type: none; 
+            margin: 0; 
+            padding: 0; 
+            width: 60%; 
+        }
+        #file-list li { 
+            margin: 2px; 
+            padding: 8px; 
+            border: 1px solid #ddd; 
+            background-color: #f9f9f9; 
+            cursor: move; 
+        }
+        /* Add other styles here as needed */
+    </style>
+</head>
+<body>
+    <h2>Upload Files</h2>
+    <p>This works best with already prepared pdf files, as docx files will be converted to pdf by internal tools.<br>
+    for best results, use pdf files for all your content.</p>
+    <form id="upload-form" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" id="file-input" multiple>
+        <button id="reverse-order" type="button">Reverse Order</button>
+        <ul id="file-list"></ul>
+        <input type="submit" value="Combine and Download">
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="{{ url_for('static', filename='sortfiles.js') }}"></script>
+</body>
+</html>
