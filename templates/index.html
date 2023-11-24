@@ -21,7 +21,19 @@
             background-color: #f9f9f9; 
             cursor: move; 
         }
-        /* Add other styles here as needed */
+        .loader {
+        border: 5px solid #f3f3f3; /* Light grey */
+        border-top: 5px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -32,9 +44,12 @@
         <input type="file" name="files" id="file-input" multiple>
         <button id="reverse-order" type="button">Reverse Order</button>
         <ul id="file-list"></ul>
+        <div id="spinner" style="display:none;">
+            <div class="loader"></div>
+        </div> 
         <input type="submit" value="Combine and Download">
     </form>
-
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
     <script src="{{ url_for('static', filename='sortfiles.js') }}"></script>
 </body>

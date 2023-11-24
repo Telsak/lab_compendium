@@ -34,12 +34,13 @@ document.getElementById('reverse-order').addEventListener('click', function() {
     updateOrderNumbers(); // Update the order numbers after reversing
 });
 
-
 document.getElementById('upload-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     var fileList = document.getElementById('file-list');
     var formData = new FormData();
+
+    document.getElementById('spinner').style.display = 'block';
 
     fileList.querySelectorAll('li').forEach(function(item, index) {
         var orderNumber = (index + 1).toString().padStart(3, '0'); // Create a 3-digit order number
@@ -63,6 +64,7 @@ document.getElementById('upload-form').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         if(data.success_url) {
+            document.getElementById('spinner').style.display = 'none';
             window.location.href = data.success_url;
         }
     })
